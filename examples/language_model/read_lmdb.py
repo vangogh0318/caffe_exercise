@@ -21,5 +21,5 @@ for key, value in lmdb_cursor:
     nparray = np.array(datum.float_data)
     nparray.shape = height, width
     print "idx:", key, label, height, width
-    for i in range(height) :
-        print nparray[i]
+    #for i in range(height) :
+    #    print nparray[i]

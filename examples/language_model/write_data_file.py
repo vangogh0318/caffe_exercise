@@ -112,7 +112,7 @@ def create_lmdb_file(dataset, phase, w2v_dict, height, width):
 def create_datasets(train, test, w2v, height) :
     print "create train lmdb"
     width = len(w2v[0])
-    #create_lmdb_file(train, "train", w2v, height, width)
+    create_lmdb_file(train, "train", w2v, height, width)
 
     print "create test lmdb"
     create_lmdb_file(test, "test", w2v, height, width)
@@ -192,6 +192,8 @@ if __name__=="__main__":
     x = cPickle.load(open(sys.argv[1],"rb"))
     revs, W, word_idx_map, vocab = x[0], x[1], x[2], x[3]
     print "data loaded!"
+
+    random.shuffle(revs)
 
     ##句子有word编号构成
     [train, test] = make_idx_data_cv(revs, word_idx_map, 0, max_l=56, k=300, filter_h=5)

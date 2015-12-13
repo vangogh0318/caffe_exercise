@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import random
 import numpy as np
 import cPickle
 from collections import defaultdict
@@ -50,6 +51,9 @@ def build_data_cv(data_folder, cv=10, clean_string=True):
                       "num_words": len(orig_rev.split()),
                       "split": np.random.randint(0,cv)}
             revs.append(datum)
+
+    random.shuffle(revs) 
+
     return revs, vocab
     
 def get_W(word_vecs, k=300):
